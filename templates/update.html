@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update Complaint Status</title>
+<meta charset="utf-8">
+<link href="/static/update/css/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic' rel='stylesheet' type='text/css'>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+				 <!-----start-main---->
+
+
+				 <div class="login-form">
+			 		<h1>Update Complaint Status to Solved!</h1>
+			 		<form action="/update-comp">
+						<input type="text" class="text" value="Complaint ID"
+						onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Complaint ID...';}"
+						name="complaint_ID" required >
+						<input type="submit" value="">
+		 			</form>
+				 </div>
+
+        <div class="datagrid">
+		<table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in complaints %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.complaint }} </td> <td><b>    {{ c.date }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+
+</body>
+</html>
+

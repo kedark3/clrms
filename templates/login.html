@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>College Lab Resource Management System</title>
+		<meta charset="utf-8">
+		<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+		window.alert("First time users, enter USERNAME(ErpRollNo@mitcoe.ac.in) and PASSWORD(of your choice) and click Sign-up!");</script>
+		<!--webfonts-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+		<!--//webfonts-->
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+	 <!-----start-main---->
+	 <div class="main">
+	     <marquee>First time users, enter USERNAME(ErpRollNo@mitcoe.ac.in) and PASSWORD(of your choice) and click Sign-up!</marquee>
+		<div class="login-form">
+			<h1>Member Login</h1>
+					<div class="head">
+						<img src="/static/user.png" alt=""/>
+					</div>
+
+				<form action="/login-check/" method="post">
+				    {% csrf_token %}
+						<input type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" name="uname" >
+						<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="password">
+						<div class="submit">
+							<input type="submit" name="login" value="LOGIN" >
+					</div>
+					{{ error }}
+					<input type="submit" name="signup" value="SIGN UP" formaction="/signup-check/" >
+				</form>
+			</div>
+			<!--//End-login-form-->
+
+	<div class="copy-right">
+					<p>© 2015 <a href="http://kedarkulkarni.in" target="_blank">Kedar Kulkarni</a> and Apurva Bakshi
+					</p>
+			</div>	 <!-----//end-main---->
+		</div>
+
+</body>
+</html>

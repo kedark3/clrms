@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Welcome</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="/static/welcome/css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="/static/welcome/js/jquery.js" type="text/javascript"></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+	</head>
+		<body>
+			<!----start-body------->
+			<!----star-wrapper-demo------->
+
+			<div class="wrapper-demo">
+	    	    <h2>Hello {{ user }},</h2>
+				<!-----start-wrapper-dropdown-2---->
+					<!--<form action="/search" method="GET">
+					    <b>Search:</b><input type="text" name="SearchString" placeholder="Enter Dead Stock No.">
+					</form>
+                    <br><br>-->
+					<div id="dd" class="wrapper-dropdown-2" tabindex="1">menu<span><img src="/static/welcome/images/menu.png"/></span>
+							<ul class="dropdown">
+                                    {% for res in results %}
+                                        <li><a href="/lab/?name={{ res.lab }}">{{ res.lab }}<span class="icon"></span></a></li>
+                                    {% endfor %}
+									<li><a href="/complaint">Complaint<span class="icon"> </span></a></li>
+									<li><a href="/overview">Department Overview<span class="icon"> </span></a></li>
+									<li><a href="/stats">Statistics<span class="icon"> </span></a></li>
+									<li><a href="/">Sign out<span class="icon signout"> </span></a></li>
+							</ul>
+					</div>
+
+
+			</div>
+
+	<!--	<div class="copy-right">
+					<p>© 2015 Kedar Kulkarni and Apurva Bakshi </p>-->
+			</div>	 <!-----//end-main---->
+			<!-----end-wrapper-dropdown-2---->
+			<!-----start-script---->
+			<script type="text/javascript">
+							function DropDown(el) {
+								this.dd = el;
+								this.initEvents();
+							}
+							DropDown.prototype = {
+								initEvents : function() {
+									var obj = this;
+
+									obj.dd.on('click', function(event){
+										$(this).toggleClass('active');
+										event.stopPropagation();
+									});
+								}
+							}
+							$(function() {
+
+								var dd = new DropDown( $('#dd') );
+
+								$(document).click(function() {
+									// all dropdowns
+									$('.wrapper-dropdown-2').removeClass('active');
+								});
+
+							});
+			</script>
+			<!-----end-script---->
+			<!----end-wrapper-demo----->
+		<!----end-body------->
+	</body>
+</html>

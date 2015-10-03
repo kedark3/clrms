@@ -1,0 +1,70 @@
+<html>
+
+<head><title>Complaint Form</title>
+		<link href="/static/complaint/css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!--webfonts-->
+		<link href='http://fonts.googleapis.com/css?family=Lobster|Pacifico:400,700,300|Roboto:400,100,100italic,300,300italic,400italic,500italic,500'  rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Raleway:400,100,500,600,700,300" rel="stylesheet" type="text/cs">
+		<!--webfonts-->
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+		</head>
+
+<body>
+        <div class="main">
+		<div class="login-head">
+    	    <h1>Hello {{ user }},</h1>
+		</div>
+		<div  class="wrap">
+	    <div class="Regisration">
+            <div class="Regisration-head">
+				    	<h2><span></span>Select Computer</h2>
+				    </div>
+
+                <form method="post" action="/Complaint-Final/" align="center">
+                    {% csrf_token %}
+                    <select id="soflow" required name="selection">
+                        {% for res in result %}
+                        <option value="{{ res.computer }}">{{ res.computer }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <select id="soflow" name="type_of_complaint" required>
+                        {% for c in complaint_types %}
+                        <option value="{{ c.name }}">{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+
+	    	        <div class="submit">
+			        	<input type="submit" value="SELECT" name="Select" >
+			        </div>
+
+		            {{ error }}
+
+	            </form>
+	        <div class="clear">
+			<h2><a class="btn" href="/">Sign Out</a></h2>
+			</div>
+	        </body>
+
+</html>

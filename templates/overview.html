@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <link href="/static/labs/style.css"  type="text/css" rel ="stylesheet" />
+        <title>Department Overview</title>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body>
+        <a class="btn" href="http://kedark7893.pythonanywhere.com/welcome"><span>Previous</span></a>
+        <a class="btn" href="/" ><span>Sign Out</span></a>
+        <h1>Details of Labs:</h1>
+        <div class="datagrid">
+        <table>
+
+        {% for d in details %}
+        <thead><tr><th>Name:{{ d.lab}}</th></tr></thead>
+        <tr><td>Location:{{d.location}}</td></tr>
+        <tr><td>No. of Computers:{{ d.pcs }}</td></tr>
+        <tr><td>No. of Printers:{{ d.printers }}</td></tr>
+        <tr><td>No. of Scanners:{{ d.scanners }}</td></tr>
+        <tr><td>No. of UPSs:{{ d.ups }}</td></tr>
+        <tr><td>Cost of UPSs:{{ d.ups_cost }}</td></tr>
+        <tr><td>No. of Communication Devices:{{ d.com_devices }}</td></tr>
+        <tr><td>Cost of Communication Devices:{{ d.com_cost }}</td></tr>
+        <tr><td>Incharge Email:{{ d.incharge }}</td></tr>
+        <tr><td>Assistant Email:{{ d.assistant }}</td></tr>
+        <tr><td>Complaints made till now:{{ d.made }}</td></tr>
+        <tr><td>Complaints resolved till now:{{ d.solved }}</td></tr>
+
+
+        {% endfor %}
+        <tfoot><tr><th>Total cost of all labs:{{cost}}</th></tr>
+        </table>
+        </div>
+
+        <h1>List of Computers in Department!</h1>
+        <div class="datagrid">
+        <table>
+        <thead><tr><th>Computer</th><th>Deadstock</th><th>Processor</th><th>Ram</th><th>HDD</th>
+        <th>Graphics</th><th>IP</th><th>Status</th><th>Description</th><th>Cost</th></thead>
+
+        <tbody>
+        {% for res in results %}
+        <tr><td>{{ res.computer }} </td><td>{{ res.deadStock }} </td><td>{{ res.processor }}</td>
+        <td>{{ res.ram }}</td><td>{{ res.hdd }}</td><td>{{ res.graphics }}</td><td>{{ res.ip }} </td>
+        <td><b>    {{ res.status }} </b></td><td>    {{ res.description }} </td><td>{{res.cost}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+
+        <br><br><br>
+        <h1>Here's the list of Printers in Department!</h1>
+        <div class="datagrid">
+        <table>
+        <thead><th>Connected to Computer</th><th>DeadStock</th><th>Manufacturer</th><th>Toner Date</th><th>Status</th><th>Cost</th></thead>
+        <tbody>
+        {% for p in printers %}
+        <tr><td>{{p.pc_name}}</td><td>{{ p.dead_stock_no}} </td><td>{{ p.mfg_desc }} </td><td>{{ p.toner_date }} </td><td>{{ p.status }} </td><td>{{ p.cost }} </td></tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+        <h1>Here's the list of Scanners in Department!</h1>
+        <div class="datagrid">
+        <table>
+        <thead><th>Connected to Computer</th><th>DeadStock</th><th>Manufacturer</th><th>Status</th><th>Cost</th></thead>
+        <tbody>
+        {% for s in scanners %}
+        <tr><td>{{s.pc_name}}</td><td>{{ s.dead_stock_no}} </td><td>{{ s.mfg_desc }} </td><td>{{ s.status }} </td><td>{{ s.cost }} </td></tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </body>
+</html>

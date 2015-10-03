@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <link href="/static/labs/style.css"  type="text/css" rel ="stylesheet" />
+        <title>Statistics</title>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/media/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/media/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/media/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/media/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/media/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/media/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/media/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/media/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/media/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+        <link rel="manifest" href="/media/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/media/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    <script>
+   function showhide(id){
+       var div = document.getElementById(id);
+       if (div.style.display !== "none") {
+        div.style.display = "none";
+       }
+    else {
+            div.style.display = "block";
+        }
+    }
+
+    </script>
+    </head>
+
+    <body>
+
+        <button id="button" class="btn" onclick="showhide('all')">Complaints</button>
+        <button id="button" class="btn" onclick="showhide('daily')">Complaints Today</button>
+        <button id="button" class="btn" onclick="showhide('hardware')">Hardware Complaints</button>
+        <button id="button" class="btn" onclick="showhide('software')">Software Complaints</button>
+        <button id="button" class="btn" onclick="showhide('pending')">Pending Complaints</button>
+        <button id="button" class="btn" onclick="showhide('mfc')">Most Frequently</button>
+        <button id="button" class="btn" onclick="showhide('range')">Complaints in Date Range</button>
+        <div id='mfc' class="datagrid">
+        <table><tr><td>Most Frequently Failing Machine:{{ mfc}}</td></tr>
+        <tr><td>Most Frequent Complaint: {{ mfctype}}</td></tr></table>
+        </div>
+        <br><br>
+        <a class="btn" href="http://kedark7893.pythonanywhere.com/welcome"><span>Previous</span></a>
+        <a class="btn" href="/" ><span>Sign Out</span></a><br><br><br>
+        <div class="datagrid" id="all">
+        <h2>All Complaints Database!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in complaints %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+        <br><br><br>
+        <div class="datagrid" id="daily">
+        <h2>Daily Complaints Database for Today!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in daily %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+<br><br><br>
+        <div class="datagrid" id="hardware">
+        <h2>Hardware Complaints!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in hardware %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+<br><br><br>
+        <div class="datagrid" id="software">
+        <h2>Software Complaints!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in software %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+<br><br><br>
+        <div class="datagrid" id="pending">
+        <h2>Pending Complaints!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in pending %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div><br><br><br>
+        <div id="range">
+        <form action="/range" method="POST" style="border:dotted;">
+            <h2>Select Date Range:</h2>
+            <b>From<input type="date" name="d1"/> to <input type="date" name="d2"/></b>
+            <br><br><button class="btn"type="submit">Submit</button><br>
+        </form>
+        <div class="datagrid" id="range">
+
+        <h2>All Complaints Database in selected Range!</h2>
+        <table>
+        <thead><tr><th>ID</th><th>Lab</th><th>Computer</th><th>Date</th><th>Complaint</th><th>Status</th></thead>
+
+        <tbody>
+        {% for c in range %}
+        <tr><td>{{ c.complaint_id }} </td><td>{{ c.lab }} </td><td>{{ c.computer_name }} </td><td>{{ c.date }} </td> <td><b>    {{ c.complaint }} </b></td><td>    {{ c.status }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table></div>
+
+    </body>
+</html>
